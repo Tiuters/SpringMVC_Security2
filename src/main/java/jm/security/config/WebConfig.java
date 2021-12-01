@@ -1,4 +1,4 @@
-package jm.security.example.config;
+package jm.security.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("jm.security.example")
+@ComponentScan("jm.security")
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
