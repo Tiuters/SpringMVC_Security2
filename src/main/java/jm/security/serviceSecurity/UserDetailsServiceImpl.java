@@ -1,4 +1,4 @@
-package jm.security.service;
+package jm.security.serviceSecurity;
 
 import jm.security.dao.UserDao;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -22,4 +22,9 @@ public class UserController {
     public String getUserPage() {
         return "user";
     }
+
+    @GetMapping(value = "/admin")
+    public String getAdminPage() {
+        return "admin";
+    }
 }
