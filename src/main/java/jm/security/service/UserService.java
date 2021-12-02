@@ -1,6 +1,6 @@
 package jm.security.service;
 
-import web.model.User;
+import jm.security.model.User;
 
 import java.util.List;
 
@@ -11,4 +11,5 @@ public interface UserService {
     void editUser(User user);
     void deleteUser(Long id);
     User getUserByName(String username);
+    void createStartUpUsers();
 }
