@@ -7,7 +7,7 @@
 <!--    <style> table th, table td {padding: 5px;}</style>-->
     <style type="text/css">
         table {
-            width: 300px; /* Ширина таблицы */
+            width: 500px; /* Ширина таблицы */
             border: black 1px solid; /* Стиль рамки таблицы */
             border-spacing: 0; /* Расстояние между ячейками */
             border-collapse: collapse; /* Одинарная рамка */
@@ -40,6 +40,8 @@
             <th>Name</th>
             <th>Last name</th>
             <th>Post</th>
+            <th>Username</th>
+            <th>Roles</th>
         </tr>
         </thead>
         <tbody>
@@ -48,6 +50,8 @@
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastName()}"></td>
             <td th:text="${user.getPost()}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getRoles()}"></td>
 
             <td>
                 <form th:action="@{get_user_to_edit/{id}(id=${user.getId()})}">
@@ -56,7 +60,7 @@
             </td>
 
             <td>
-                <form th:method="DELETE" th:action="@{/delete_user/{id}(id=${user.getId()})}">
+                <form th:method="DELETE" th:action="@{delete_user/{id}(id=${user.getId()})}">
                     <input type="submit" value="delete"/>
                 </form>
             </td>
@@ -65,7 +69,7 @@
         </tbody>
     </table>
     <p>
-    <form style="text-align: center" th:action="@{/make_new_empty}">
+    <form style="text-align: center" th:action="@{make_new_empty}">
         <button>Make new!</button>
     </form>
     </p>

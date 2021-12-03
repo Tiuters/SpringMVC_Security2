@@ -19,7 +19,7 @@ public class Role  implements GrantedAuthority{
     private String role;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-    private List<User> users = new ArrayList<>();
+    private List<User> users;
 
     public Role() {
     }
@@ -32,7 +32,6 @@ public class Role  implements GrantedAuthority{
         if (users == null) {
             users = new ArrayList<>();
         }
-
         users.add(user);
     }
 

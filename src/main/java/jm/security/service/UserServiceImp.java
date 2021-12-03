@@ -17,6 +17,7 @@ public class UserServiceImp implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
+//    private String username;
 
     public UserServiceImp(UserDao userDao, RoleDao roleDao) {
         this.userDao = userDao;
@@ -37,7 +38,6 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void newUser(User user) {
-
         userDao.newUser(user);
     }
 
@@ -54,7 +54,12 @@ public class UserServiceImp implements UserService {
     @Override
     public User getUserByName(String username){
         return userDao.getUserByUsername(username);
+//        this.username = username;
     }
+
+//    public String getUsername() {
+//        return username;
+//    }
 
 //    private final Map<String, User> userMap = Collections.singletonMap("test",
 //        new User(1L, "test", "test", Collections.singleton(new Role(1L, "ROLE_USER")))); // name - уникальное значение, выступает в качестве ключа Map
