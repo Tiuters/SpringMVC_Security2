@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 @Entity
@@ -47,12 +48,12 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public User(Long id, String username, String password, Set<Role> roles) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-    }
+//    public User(Long id, String username, String password, Set<Role> roles) {
+//        this.id = id;
+//        this.username = username;
+//        this.password = password;
+//        this.roles = roles;
+//    }
 
     public void addRoleToUser(Role role) {
         if (roles == null) {
@@ -102,9 +103,17 @@ public class User implements UserDetails {
     }
 
     public Set<Role> getRoles() {
-
         return roles;
     }
+
+    public String getRolesAsString() {
+StringBuilder sb = new StringBuilder();
+        for (Role role : roles) {
+            sb.append(role.getRole().toString()).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2);
+    }
+
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;

@@ -1,10 +1,14 @@
 package jm.security.controllers;
 
 import jm.security.defaultUsers.StartUpUsers;
+import jm.security.model.User;
 import jm.security.service.UserService;
 import jm.security.serviceSecurity.UserDetailsServiceImpl;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,23 +22,27 @@ import javax.annotation.PostConstruct;
 public class UserController {
 
     private final UserService userService;
-    private final StartUpUsers startUpUsers;
-    private UserDetailsServiceImpl userDetailsService;
 
-    public UserController(UserService userService, StartUpUsers startUpUsers) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.startUpUsers = startUpUsers;
     }
 
-    @GetMapping(value = "")
+    @GetMapping
     public String UserButton() {
         return "/user_button";
     }
 
-    @GetMapping("/{id}")
-    public String show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.showUser(id));
-        model.addAttribute("user", userService.showUser(id).getRoles());
+    @GetMapping("/details")
+    public String show(Model model, @AuthenticationPrincipal User user) {
+//        SecurityContext context = SecurityContextHolder.getContext();
+//        Authentication authentication = context.getAuthentication();
+//        User principal = (User) authentication.getPrincipal();
+
+//        Long id = user.getId();
+        model.addAttribute("user", user);
+
+//        model.addAttribute("user", userService.showUser(id));
+//        model.addAttribute("user", userService.showUser(id).getRoles());
         return "user";
     }
 

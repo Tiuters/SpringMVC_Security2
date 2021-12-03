@@ -12,26 +12,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
-@Component
+//@Component
 public class StartUpUsers {
-    private final UserDao userDao;
-    private final RoleDao roleDao;
-
-    public StartUpUsers(UserDao userDao, RoleDao roleDao) {
-        this.userDao = userDao;
-        this.roleDao = roleDao;
-    }
+//    private final UserDao userDao;
+//    private final RoleDao roleDao;
+//
+//    public StartUpUsers(UserDao userDao, RoleDao roleDao) {
+//        this.userDao = userDao;
+//        this.roleDao = roleDao;
+//    }
 
 //    @PostConstruct
-    public void createStartUpUsers() {
-
-        User admin = new User("Bob", "Sec", "Hhh",
-            "admin", "000");
-        Role adminRole = new Role("ROLE_ADMIN");
-
-        userDao.newUser(admin);
-        roleDao.saveRole(adminRole);
-        admin.addRoleToUser(adminRole);
-        adminRole.addUserToRole(admin);
-    }
+//    public void createStartUpUsers() {
+//
+//        User admin = new User("Bob", "Sec", "Hhh",
+//            "admin", "000");
+//        Role adminRole = new Role("ROLE_ADMIN");
+//
+//        userDao.newUser(admin);
+//        roleDao.saveRole(adminRole);
+//        admin.addRoleToUser(adminRole);
+//        adminRole.addUserToRole(admin);
+//    }
 }

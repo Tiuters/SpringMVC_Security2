@@ -17,7 +17,6 @@ public class UserServiceImp implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
-//    private String username;
 
     public UserServiceImp(UserDao userDao, RoleDao roleDao) {
         this.userDao = userDao;
@@ -84,14 +83,15 @@ public class UserServiceImp implements UserService {
 
         Role roleAdmin = new Role("ROLE_ADMIN");
         Role roleUser = new Role("ROLE_USER");
+        Role rolePuzer = new Role("ROLE_PUZER");
 
         userDao.newUser(admin);
         roleDao.saveRole(roleAdmin);
         admin.addRoleToUser(roleAdmin);
+        admin.addRoleToUser(roleUser);
 
         userDao.newUser(user);
         roleDao.saveRole(roleUser);
         user.addRoleToUser(roleUser);
-
     }
 }
