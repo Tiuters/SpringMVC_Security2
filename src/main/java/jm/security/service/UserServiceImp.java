@@ -63,7 +63,6 @@ public class UserServiceImp implements UserService {
 //        if (!userMap.containsKey(name)) {
 //            return null;
 //        }
-//
 //        return userMap.get(name);
 //    }
 
@@ -72,14 +71,22 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void createStartUpUsers() {
-        User admin = new User("Bob", "Sec", "Hhh",
-            "admin", "000");
-        Role adminRole = new Role("ROLE_ADMIN");
 
-        newUser(admin);
-        roleDao.saveRole(adminRole);
-        admin.addRoleToUser(adminRole);
-        adminRole.addUserToRole(admin);
+        User admin = new User("Bob", "Sec", "god",
+            "admin", "111");
+        User user = new User("Chin", "Drake", "puser",
+            "user", "222");
+
+        Role roleAdmin = new Role("ROLE_ADMIN");
+        Role roleUser = new Role("ROLE_USER");
+
+        userDao.newUser(admin);
+        roleDao.saveRole(roleAdmin);
+        admin.addRoleToUser(roleAdmin);
+
+        userDao.newUser(user);
+        roleDao.saveRole(roleUser);
+        user.addRoleToUser(roleUser);
 
     }
 }
