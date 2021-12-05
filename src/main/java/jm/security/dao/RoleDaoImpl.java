@@ -25,10 +25,3 @@ public class RoleDaoImpl implements RoleDao{
             .getSingleResult();
     }
 }
-//    @Override
-//    public User getUserByUsername(String username) {
-//        return entityManager
-//            .createQuery("SELECT u FROM User AS u WHERE u.username = : username", User.class)
-//            .setParameter("username", username)
-//            .getSingleResult();
-//    }

@@ -24,13 +24,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-//    @Transactional(readOnly = true)
     public List<User> showAllUsers() {
         return userDao.showAllUsers();
     }
 
     @Override
-//    @Transactional(readOnly = true)
     public User showUser(Long id) {
         return userDao.showUser(id);
     }
@@ -57,17 +55,6 @@ public class UserServiceImp implements UserService {
         return userDao.getUserByUsername(username);
     }
 
-    @Override
-    public List<String> rolesToList(Set<Role> set) {
-        List<String> list = new ArrayList<>();
-        for (Role r : set) {
-            list.add(r.toString());
-        }
-        System.out.println(list);
-        return list;
-    }
-
-
 //    private final Map<String, User> userMap = Collections.singletonMap("test",
 //        new User(1L, "test", "test", Collections.singleton(new Role(1L, "ROLE_USER")))); // name - уникальное значение, выступает в качестве ключа Map
 //    @Override
@@ -77,7 +64,6 @@ public class UserServiceImp implements UserService {
 //        }
 //        return userMap.get(name);
 //    }
-
 
     @Override
     public void createStartUpUsers() {

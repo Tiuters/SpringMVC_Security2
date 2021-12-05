@@ -29,23 +29,21 @@ public class UserController {
     }
 
     @GetMapping
-    public String UserButton() {
-        return "/user_button";
-    }
-
-    @GetMapping("/details")
     public String show(Model model, @AuthenticationPrincipal User user) {
-//        SecurityContext context = SecurityContextHolder.getContext();
-//        Authentication authentication = context.getAuthentication();
-//        User principal = (User) authentication.getPrincipal();
-
         model.addAttribute("user", user);
         return "user";
     }
-
 
     @PostConstruct
     public void defaultUsers() {
         userService.createStartUpUsers();
     }
 }
+
+
+
+
+//        SecurityContext context = SecurityContextHolder.getContext();
+//        Authentication authentication = context.getAuthentication();
+//        User principal = (User) authentication.getPrincipal();
+

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
-<html lang="en">
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">-->
+<!--<html lang="en">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>All users</title>
@@ -54,13 +55,13 @@
             <td th:text="${user.getRolesAsString()}"></td>
 
             <td>
-                <form th:action="@{get_user_to_edit/{id}(id=${user.getId()})}">
+                <form th:action="@{admin/get_user_to_edit/{id}(id=${user.getId()})}">
                     <button>Edit</button>
                 </form>
             </td>
 
             <td>
-                <form th:method="DELETE" th:action="@{delete_user/{id}(id=${user.getId()})}">
+                <form th:method="DELETE" th:action="@{/admin/delete_user/{id}(id=${user.getId()})}">
                     <input type="submit" value="delete"/>
                 </form>
             </td>
@@ -69,9 +70,12 @@
         </tbody>
     </table>
     <p>
-    <form style="text-align: center" th:action="@{make_new_empty}">
+    <form style="text-align: center" th:action="@{/admin/make_new_empty/}">
         <button>Make new!</button>
+        <a href="/logout">Logout</a>
     </form>
+<!--    <br/><br/>-->
+<!--    <a href="/user">Admin's personal page</a>-->
     </p>
 </div>
 </body>
