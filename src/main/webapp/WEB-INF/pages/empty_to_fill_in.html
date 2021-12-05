@@ -6,7 +6,7 @@
     <title>New User</title>
 </head>
 <body>
-<form style="text-align: center" action="#" th:action="@{/admin/brand_new_user}" th:object="${user}" th:method="POST">
+<form  th:action="@{/admin/brand_new_user}" th:object="${user}" th:method="POST">
     <input type="text" th:field="*{name}" id="name">
     <label for="name">Name</label>
     <br><br>
@@ -16,10 +16,21 @@
     <input type="text" th:field="*{post}" id="post">
     <label for="post">Post</label>
     <br><br>
+    <input type="text" th:field="*{username}" id="username">
+    <label for="post">Username</label>
+    <br><br>
+    <input type="text" th:field="*{password}" id="password">
+    <label for="post">Password</label>
+    <br><br>
+
+    <input type="checkbox" name="checkBox" value="ROLE_USER">User</input><br>
+    <input type="checkbox" name="checkBox" value="ROLE_ADMIN">Admin</input>
+    <br><br>
+
     <input type="submit" value="Add User">
 </form>
 <p>
-<form style="text-align: center" th:action="@{/users}">
+<form  th:action="@{/admin/give_me_them_all}">
     <button>To all users</button>
 </form>
 </p>

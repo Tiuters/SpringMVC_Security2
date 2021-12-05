@@ -16,4 +16,19 @@ public class RoleDaoImpl implements RoleDao{
     public void saveRole(Role role) {
         entityManager.persist(role);
     }
+
+    @Override
+    public Role getRoleByName(String roleName) {
+        return entityManager
+            .createQuery("SELECT r FROM Role AS r WHERE r.role = : roleName", Role.class)
+            .setParameter("roleName", roleName)
+            .getSingleResult();
+    }
 }
+//    @Override
+//    public User getUserByUsername(String username) {
+//        return entityManager
+//            .createQuery("SELECT u FROM User AS u WHERE u.username = : username", User.class)
+//            .setParameter("username", username)
+//            .getSingleResult();
+//    }

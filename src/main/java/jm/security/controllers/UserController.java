@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.PostConstruct;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/user")
@@ -38,43 +39,10 @@ public class UserController {
 //        Authentication authentication = context.getAuthentication();
 //        User principal = (User) authentication.getPrincipal();
 
-//        Long id = user.getId();
         model.addAttribute("user", user);
-
-//        model.addAttribute("user", userService.showUser(id));
-//        model.addAttribute("user", userService.showUser(id).getRoles());
         return "user";
     }
 
-//    @GetMapping(value = "/details")
-//    public String getUserPage(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        model.addAttribute("user", userDetailsService.loadUserByUsername(authentication.getName()));
-//        return "user";
-//    }
-
-//    @GetMapping("/give_me_them_all")
-//    public String showAllUsers(Model model) {
-//        model.addAttribute("users", userService.showAllUsers());
-//        return "/all_users_fall_in";
-//    }
-
-//    @GetMapping(value = "/")
-//    public String getHomePage() {
-//        return "index";
-//    }
-
-//    @GetMapping(value = "/login")
-//    public String getLoginPage() {
-//        return "login";
-//    }
-
-
-
-//    @GetMapping(value = "/admin")
-//    public String getAdminPage() {
-//        return "admin";
-//    }
 
     @PostConstruct
     public void defaultUsers() {

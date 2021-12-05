@@ -7,9 +7,7 @@ import jm.security.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -17,10 +15,12 @@ public class UserServiceImp implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
+    private final RoleService roleService;
 
-    public UserServiceImp(UserDao userDao, RoleDao roleDao) {
+    public UserServiceImp(UserDao userDao, RoleDao roleDao, RoleService roleService) {
         this.userDao = userDao;
         this.roleDao = roleDao;
+        this.roleService = roleService;
     }
 
     @Override
@@ -40,6 +40,8 @@ public class UserServiceImp implements UserService {
         userDao.newUser(user);
     }
 
+
+
     @Override
     public void editUser(User user) {
         userDao.editUser(user);
@@ -51,14 +53,20 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User getUserByName(String username){
+    public User getUserByName(String username) {
         return userDao.getUserByUsername(username);
-//        this.username = username;
     }
 
-//    public String getUsername() {
-//        return username;
-//    }
+    @Override
+    public List<String> rolesToList(Set<Role> set) {
+        List<String> list = new ArrayList<>();
+        for (Role r : set) {
+            list.add(r.toString());
+        }
+        System.out.println(list);
+        return list;
+    }
+
 
 //    private final Map<String, User> userMap = Collections.singletonMap("test",
 //        new User(1L, "test", "test", Collections.singleton(new Role(1L, "ROLE_USER")))); // name - уникальное значение, выступает в качестве ключа Map
@@ -71,8 +79,6 @@ public class UserServiceImp implements UserService {
 //    }
 
 
-
-
     @Override
     public void createStartUpUsers() {
 
@@ -83,12 +89,10 @@ public class UserServiceImp implements UserService {
 
         Role roleAdmin = new Role("ROLE_ADMIN");
         Role roleUser = new Role("ROLE_USER");
-        Role rolePuzer = new Role("ROLE_PUZER");
 
-        userDao.newUser(admin);
-        roleDao.saveRole(roleAdmin);
+        newUser(admin);
+        roleService.saveRole(roleAdmin);
         admin.addRoleToUser(roleAdmin);
-        admin.addRoleToUser(roleUser);
 
         userDao.newUser(user);
         roleDao.saveRole(roleUser);

@@ -1,8 +1,10 @@
 package jm.security.service;
 
+import jm.security.model.Role;
 import jm.security.model.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     List<User> showAllUsers();
@@ -12,4 +14,5 @@ public interface UserService {
     void deleteUser(Long id);
     User getUserByName(String username);
     void createStartUpUsers();
+    List<String> rolesToList(Set<Role> set);
 }
